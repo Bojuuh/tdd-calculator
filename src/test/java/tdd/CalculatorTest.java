@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 
+import java.lang.reflect.Array;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CalculatorTest {
@@ -16,13 +18,14 @@ class CalculatorTest {
     void tearDown() {
     }
 
+    // Calculator 1
     @Test
     @DisplayName("add test")
     void testAddition(){
         int a = 10;
         int b = 5;
         int expected = 15;
-        int actual = calculator.add(a,b);
+        int actual = calculator.add(a, b);
         assertEquals(expected, actual);
     }
 
@@ -56,4 +59,22 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    // Calculator 2
+    @Test
+    @DisplayName("add with string input test")
+    void testAddStringInput(){
+        String input = "1, 2, 3";
+        int expected = 6;
+        int actual = calculator.add(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("add with number array as input test")
+    void testAddNumArrayInput(){
+        int[] numbers = {1, 2, 3};
+        int expected = 6;
+        int actual = calculator.add(numbers);
+        assertEquals(expected, actual);
+    }
 }
